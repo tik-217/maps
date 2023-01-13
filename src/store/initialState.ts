@@ -1,5 +1,6 @@
 import { IInitialState } from "../../types";
 
 export const initialState: IInitialState = {
-  currentCoord: [],
+  coordId: 0,
+  mapData: [],
 };

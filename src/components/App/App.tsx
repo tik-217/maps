@@ -1,5 +1,4 @@
-import "./App.css";
-import Requester from "../Requester/Requester";
+import { Requester } from "./index";
 
 function App() {
   return (

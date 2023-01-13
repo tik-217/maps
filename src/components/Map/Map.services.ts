@@ -1,6 +1,4 @@
-import { IMapWaypointsElement } from "../../../types";
-import { order } from "../../services/orders";
-import { useEffect, L, useMap } from "./index";
+import { useEffect, L, useMap, order, IMapWaypoints } from "./index";
 
 export function createUrlParam(coordId: number) {
   const coordinate = order[coordId];
@@ -19,23 +17,31 @@ export function createUrlParam(coordId: number) {
   return latLangParamUrl;
 }
 
-export function DrawingRoute({
-  waypoints,
-}: {
-  waypoints: IMapWaypointsElement[];
-}) {
+export function DrawingRoute({ waypoints }: IMapWaypoints) {
   const map = useMap();
+  const routing = L.Routing;
+
+  function clearingMap(control: L.Routing.Control) {
+    control.getPlan().setWaypoints([]);
+
+    const markersDOMElement = document.querySelector(".leaflet-marker-pane");
+    const markersShadow = document.querySelector(".leaflet-shadow-pane");
+
+    if (markersDOMElement && markersShadow) {
+      markersDOMElement.innerHTML = "";
+      markersShadow.innerHTML = "";
+    }
+  }
 
   useEffect(() => {
     if (!waypoints.length) return;
-
-    const routing = L.Routing;
 
     const routingWaypoints = waypoints.map((el) =>
       L.latLng([el.location[0], el.location[1]])
     );
 
-    routing
+    let control = routing
+      // eslint-disable-next-line
       .control({
         waypoints: routingWaypoints,
         show: false,
@@ -47,6 +53,11 @@ export function DrawingRoute({
         draggableWaypoints: false,
       })
       .addTo(map);
+
+    return function () {
+      clearingMap(control);
+    };
+    // eslint-disable-next-line
   }, [waypoints, map]);
 
   return null;

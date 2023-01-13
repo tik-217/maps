@@ -1,12 +1,12 @@
 // react
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // style
 import "./Map.style.scss";
 
 // services
-import { createUrlParam, DrawingRoute } from "./Map.services";
-import { useGetMapDataQuery } from "../../services/api";
+import { DrawingRoute, createUrlParam } from "./Map.services";
+import { order } from "../../services/orders";
 
 // leaflet
 import L from "leaflet";
@@ -26,9 +26,16 @@ import {
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 
+// types
+import { IMapWaypointsElement, IMapWaypoints } from "../../../types";
+
+// redux
+import { mapWaypointsSelecor } from "../../store/selectors/selectors";
+import { useAppSelector } from "../../store/store";
+
 export {
   L,
-  React,
+  order,
   Popup,
   Marker,
   useMap,
@@ -39,6 +46,8 @@ export {
   FeatureGroup,
   MapContainer,
   DrawingRoute,
+  useAppSelector,
   createUrlParam,
-  useGetMapDataQuery,
+  mapWaypointsSelecor,
 };
+export type { IMapWaypointsElement, IMapWaypoints };

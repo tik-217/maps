@@ -1,3 +1,15 @@
+# The console will display a warning that a demo server is being used.
+
+```
+You are using OSRM's demo server. Please note that it is **NOT SUITABLE FOR PRODUCTION USE**.
+Refer to the demo server's usage policy: https://github.com/Project-OSRM/osrm-backend/wiki/Api-usage-policy
+
+To change, set the serviceUrl option.
+
+Please do not report issues with this server to neither Leaflet Routing Machine or OSRM - it's for
+demo only, and will sometimes not be available, or work in unexpected ways.
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

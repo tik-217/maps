@@ -1,17 +1,17 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// axios
+import axios from "axios";
 
-export const coordinate = createApi({
-  reducerPath: "coordinate",
-  tagTypes: ["Coordinate"],
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://router.project-osrm.org/",
-  }),
-  endpoints: (build) => ({
-    getMapData: build.query({
-      query: (coordinate) =>
-        `route/v1/driving/${coordinate}?steps=true&geometries=geojson`,
-    }),
-  }),
-});
+export async function getMapApi(urlCoordinate: string) {
+  const params = {
+    steps: true,
+    geometries: "geojson",
+  };
 
-export const { useGetMapDataQuery } = coordinate;
+  return await axios({
+    method: "get",
+    url: `https://router.project-osrm.org/route/v1/driving/${urlCoordinate}`,
+    params,
+  })
+    .then(({ data }) => data.waypoints)
+    .catch((err) => err);
+}
