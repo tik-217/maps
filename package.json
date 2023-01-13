@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.14",
     "@react-leaflet/core": "^2.1.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -15,6 +16,7 @@
     "@types/react-dom": "^18.0.10",
     "antd": "^5.1.4",
     "axios": "^1.2.2",
+    "installed": "^3.3.1",
     "leaflet": "^1.9.3",
     "leaflet-routing-machine": "^3.2.12",
     "react": "^18.2.0",
