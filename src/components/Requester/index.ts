@@ -8,13 +8,8 @@ import "./Requester.style.scss";
 import Map from "../Map/Map";
 
 // services
-import { order } from "../../services/orders";
 import { removeActiveBackground } from "./Requester.services";
 import { createUrlParam } from "../Map";
-
-// Antd
-import { Table } from "antd";
-import "antd/dist/reset.css";
 
 // redux
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -23,14 +18,12 @@ import { coordIdSelector } from "../../store/selectors/selectors";
 
 export {
   Map,
-  Table,
-  order,
   getMap,
   useEffect,
   setCoordId,
-  useAppSelector,
-  useAppDispatch,
-  coordIdSelector,
   createUrlParam,
+  useAppSelector,
+  coordIdSelector,
+  useAppDispatch,
   removeActiveBackground,
 };
